@@ -1,11 +1,13 @@
-import React from "react";
-import { v4 as uuidv4 } from "uuid";
+import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { Button, Stack } from '@mui/material';
+import TextField from '@mui/material/TextField';
 
 export default function AddTask({ addItem }) {
   const formData = {
-    id: "",
-    task: "",
-    isDone: false
+    id: '',
+    task: '',
+    isDone: false,
   };
   const [formValue, setFormValue] = React.useState(formData);
 
@@ -15,7 +17,7 @@ export default function AddTask({ addItem }) {
       ...prevData,
       id: uuidv4(),
       task: e.target.value,
-      isDone: false
+      isDone: false,
     }));
   };
 
@@ -26,13 +28,24 @@ export default function AddTask({ addItem }) {
   return (
     <>
       <form>
-        <input
-          type="text"
-          placeholder="Add Item"
-          value={formValue.task}
-          onChange={handleChange}
-        />
-        <button onClick={(event) => handleClick(event)}>Add Task</button>
+        <Stack spacing={4} direction="row">
+          <TextField
+            type="text"
+            value={formValue.task}
+            size="small"
+            label="Add Item"
+            variant="outlined"
+            onChange={handleChange}
+          />
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={(event) => handleClick(event)}
+          >
+            Add Task
+          </Button>
+        </Stack>
+        {/* <button onClick={(event) => handleClick(event)}>Add Task</button> */}
       </form>
     </>
   );

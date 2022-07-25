@@ -1,13 +1,19 @@
-import React from "react";
+import React from 'react';
+import { Button, Typography, Stack } from '@mui/material';
 
 const Task = (props) => {
   return (
-    <div className="task">
-      <p>{props.data.task}</p>
+    <Stack direction="row" spacing={4}>
+      <Typography variant="h6">{props.data.task}</Typography>
       {props.data.task && (
-        <button onClick={() => props.deleteItem(props.data.id)}>delete</button>
+        <Button
+          variant="contained"
+          onClick={() => props.deleteItem(props.data.id)}
+        >
+          delete
+        </Button>
       )}
-    </div>
+    </Stack>
   );
 };
 export default Task;
